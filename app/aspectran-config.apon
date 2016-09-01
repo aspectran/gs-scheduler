@@ -1,0 +1,17 @@
+context: {
+	root: "/config/scheduler-config.xml"
+	resources: [
+		"/config"
+	]
+	hybridLoad: false
+	autoReload: {
+		reloadMethod: soft
+		observationInterval: 5
+		startup: false
+	}
+}
+scheduler: {
+	startDelaySeconds: 5
+	waitOnShutdown: false
+	startup: true
+}
