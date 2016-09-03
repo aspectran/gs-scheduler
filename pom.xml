@@ -34,10 +34,16 @@
 					<excludeDefaultDirectories>true</excludeDefaultDirectories>
 					<filesets>
 						<fileset>
-							<directory>app/lib</directory>
+							<directory>target/</directory>
+						</fileset>
+						<fileset>
+							<directory>app/lib/</directory>
 							<includes>
 								<include>*.jar</include>
 							</includes>
+						</fileset>
+						<fileset>
+							<directory>app/classes/</directory>
 						</fileset>
 					</filesets>
 				</configuration>

@@ -8,7 +8,8 @@
 		<setting name="transletNamePattern" value="*.job"/>
 	</settings>
 
-	<bean id="*" scan="com.aspectran.sample.**.*Job" mask="com.aspectran.sample.**.*"/>
+	<bean id="*" scan="com.aspectran.sample.**.*Action" mask="com.aspectran.**.*"/>
+	<bean id="*" scan="com.aspectran.sample.**.*Job" mask="com.aspectran.**.*"/>
 
 	<bean id="defaultScheduler1" class="com.aspectran.scheduler.support.QuartzSchedulerFactoryBean">
 		<properties>
@@ -50,7 +51,7 @@
 
 	<schedule id="scheduler1">
 		<trigger type="simple">
-			intervalInSeconds: 10
+			intervalInSeconds: 3
 			repeatCount: 10
 		</trigger>
 		<scheduler bean="defaultScheduler1">
@@ -60,8 +61,8 @@
 
 	<schedule id="scheduler2">
 		<trigger type="simple">
-			startDelaySeconds: 5
-			intervalInSeconds: 10
+			startDelaySeconds: 2
+			intervalInSeconds: 1
 			repeatCount: 10
 		</trigger>
 		<scheduler bean="defaultScheduler2">
@@ -70,12 +71,22 @@
 	</schedule>
 
 	<translet name="hello1">
+		<action bean="sample.CommonAction" method="delay">
+			<arguments>
+				<item valueType="int">1</item>
+			</arguments>
+		</action>
 		<transform type="transform/text" contentType="text/plain">
 			<template>1) Hello, World!</template>
 		</transform>
 	</translet>
 
 	<translet name="hello2">
+		<action bean="sample.CommonAction" method="delay">
+			<arguments>
+				<item valueType="int">2</item>
+			</arguments>
+		</action>
 		<transform type="transform/text" contentType="text/plain">
 			<template>2) Hello, World!</template>
 		</transform>

@@ -2,6 +2,7 @@ context: {
 	root: "/config/scheduler-config.xml"
 	resources: [
 		"/config"
+		"/classes"
 	]
 	hybridLoad: false
 	autoReload: {
@@ -11,7 +12,7 @@ context: {
 	}
 }
 scheduler: {
-	startDelaySeconds: 5
+	startDelaySeconds: 1
 	waitOnShutdown: false
 	startup: true
 }
