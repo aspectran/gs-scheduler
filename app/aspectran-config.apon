@@ -1,8 +1,8 @@
 context: {
-	root: "/config/scheduler-config.xml"
+	root: /config/scheduler-config.xml
 	resources: [
-		"/config"
-		"/classes"
+		/config
+		/classes
 	]
 	hybridLoad: false
 	autoReload: {
