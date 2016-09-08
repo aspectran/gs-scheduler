@@ -1,4 +1,4 @@
-package com.aspectran.sample;
+package sample;
 
 public class CommonAction {
 

@@ -8,8 +8,8 @@
 		<setting name="transletNamePattern" value="*.job"/>
 	</settings>
 
-	<bean id="*" scan="com.aspectran.sample.**.*Action" mask="com.aspectran.**.*"/>
-	<bean id="*" scan="com.aspectran.sample.**.*Job" mask="com.aspectran.**.*"/>
+	<bean id="*" scan="sample.**.*Action"/>
+	<bean id="*" scan="sample.**.*Job"/>
 
 	<bean id="defaultScheduler1" class="com.aspectran.scheduler.support.QuartzSchedulerFactoryBean">
 		<properties>
