@@ -7,3 +7,6 @@
 /.idea
 /target
 /app/classes
+/app/lib
+/app/logs/*.log
+/app/temp

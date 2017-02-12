@@ -6,8 +6,8 @@ context: {
 	]
 	hybridLoad: false
 	autoReload: {
-		reloadMethod: soft
-		observationInterval: 5
+		reloadMode: soft
+		scanIntervalSeconds: 5
 		startup: false
 	}
 }
