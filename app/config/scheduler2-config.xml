@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE aspectran PUBLIC "-//ASPECTRAN//DTD Aspectran Configuration 4.0//EN"
+        "http://aspectran.github.io/dtd/aspectran-4.dtd">
+
+<aspectran>
+
+    <bean id="schedulerFactory" class="org.quartz.impl.StdSchedulerFactory">
+        <constructor>
+            <arguments>
+                <item type="properties">
+                    <value name="org.quartz.scheduler.instanceName">AspectranQuartzScheduler-2</value>
+                    <value name="org.quartz.scheduler.rmi.export">false</value>
+                    <value name="org.quartz.scheduler.rmi.proxy">false</value>
+                    <value name="org.quartz.scheduler.wrapJobExecutionInUserTransaction">false</value>
+                    <value name="org.quartz.threadPool.class">org.quartz.simpl.SimpleThreadPool</value>
+                    <value name="org.quartz.threadPool.threadCount">10</value>
+                    <value name="org.quartz.threadPool.threadPriority">5</value>
+                    <value name="org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread">true</value>
+                    <value name="org.quartz.jobStore.misfireThreshold">60000</value>
+                    <value name="org.quartz.jobStore.class">org.quartz.simpl.RAMJobStore</value>
+                </item>
+            </arguments>
+        </constructor>
+    </bean>
+
+    <bean id="defaultScheduler2" factoryBean="schedulerFactory" factoryMethod="getScheduler"/>
+
+    <schedule id="scheduler2">
+        <scheduler bean="defaultScheduler2">
+            <trigger type="simple">
+                startDelaySeconds: 2
+                intervalInSeconds: 1
+                repeatCount: 10
+            </trigger>
+        </scheduler>
+        <job translet="hello2"/>
+    </schedule>
+
+    <translet name="hello2">
+        <action bean="sample.CommonAction" method="delay">
+            <arguments>
+                <item valueType="int">2</item>
+            </arguments>
+        </action>
+        <transform type="transform/text" contentType="text/plain">
+            <template>2) Hello, World!</template>
+        </transform>
+    </translet>
+
+</aspectran>

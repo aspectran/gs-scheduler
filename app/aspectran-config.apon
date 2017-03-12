@@ -1,18 +1,24 @@
 context: {
-	root: /config/scheduler-config.xml
-	resources: [
-		/config
-		/classes
-	]
-	hybridLoad: false
-	autoReload: {
-		reloadMode: soft
-		scanIntervalSeconds: 5
-		startup: false
-	}
+    root: /config/root-config.xml
+    resources: [
+        /config
+        /classes
+    ]
+    hybridLoad: false
+    autoReload: {
+        reloadMode: soft
+        scanIntervalSeconds: 5
+        startup: false
+    }
+    profiles: {
+    }
 }
 scheduler: {
-	startDelaySeconds: 1
-	waitOnShutdown: false
-	startup: true
+    startDelaySeconds: 1
+    waitOnShutdown: true
+    startup: true
+}
+console: {
+    mode: jline
+    prompt: "ga-scheduler> "
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE aspectran PUBLIC "-//ASPECTRAN//DTD Aspectran Configuration 4.0//EN"
+        "http://aspectran.github.io/dtd/aspectran-4.dtd">
+
+<aspectran>
+
+    <settings>
+        <setting name="transletNamePattern" value="*.job"/>
+    </settings>
+
+    <bean id="*" scan="sample.**.*Action"/>
+    <bean id="*" scan="sample.**.*Job"/>
+
+    <import file="/config/scheduler1-config.xml"/>
+    <import file="/config/scheduler2-config.xml"/>
+
+</aspectran>
