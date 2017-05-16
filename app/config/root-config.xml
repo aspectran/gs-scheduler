@@ -11,7 +11,7 @@
     <bean id="*" scan="sample.**.*Action"/>
     <bean id="*" scan="sample.**.*Job"/>
 
-    <import file="/config/scheduler1-config.xml"/>
-    <import file="/config/scheduler2-config.xml"/>
+    <append file="/config/scheduler1-config.xml"/>
+    <append file="/config/scheduler2-config.xml"/>
 
 </aspectran>
