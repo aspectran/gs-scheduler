@@ -20,5 +20,6 @@ scheduler: {
 }
 console: {
     mode: jline
-    prompt: "ga-scheduler> "
+    prompt: "{{BLUE}}gs-console-app{{YELLOW,bold}}>{{off}} "
+    showDescription: true
 }
