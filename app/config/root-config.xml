@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE aspectran PUBLIC "-//ASPECTRAN//DTD Aspectran Configuration 4.0//EN"
-        "http://aspectran.github.io/dtd/aspectran-4.dtd">
+<!DOCTYPE aspectran PUBLIC "-//ASPECTRAN//DTD Aspectran Configuration 5.0//EN"
+                           "http://aspectran.github.io/dtd/aspectran-5.dtd">
 
 <aspectran>
 
     <description style="apon">
         |
         |   {{bold}}--- Demonstrating the Scheduler Sample Application ---{{bold:off}}
-        |
-        |{{underline}}Built-in commands for this console application:{{underline:off}}
-        |   {{green}}desc on{{fg:off}} - Prints a description of the command each time the command is executed
-        |   {{green}}desc off{{fg:off}} - Turns off print a description of the command each time the command is executed
-        |   {{green}}help{{fg:off}} - Prints help for the available commands that was displayed at startup
-        |   {{green}}restart{{fg:off}} - Restarts this console application
-        |   {{green}}mem{{fg:off}} - Shows memory usage
-        |   {{green}}gc{{fg:off}} - Performs a garbage collection
-        |   {{green}}quit{{fg:off}} - Exits from this console application
         |
     </description>
 
