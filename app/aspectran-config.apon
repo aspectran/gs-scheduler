@@ -19,7 +19,7 @@ scheduler: {
     startup: true
 }
 shell: {
-    prompt: "{{CYAN}}gs-scheduler{{YELLOW}}>{{off}} "
+    prompt: "{{CYAN}}gs-scheduler{{YELLOW}}>{{reset}} "
     commands: [
         com.aspectran.shell.command.builtin.HelpCommand
         com.aspectran.shell.command.builtin.VerboseCommand
@@ -33,13 +33,13 @@ shell: {
     ]
     greetings: (
         |
-        |   {{bold}}--- Welcome To Aspectran Shell ---{{bold:off}}   {{BLUE}}ASPECTRAN SHELL #{class:com.aspectran.core.util.Aspectran^version}{{off}}
+        |   {{bold}}--- Welcome To Aspectran Shell ---{{bold:off}}   {{BLUE}}ASPECTRAN SHELL #{class:com.aspectran.core.util.Aspectran^version}{{reset}}
         |
-        |To run a command, type '{{GREEN}}command_name [options] [args]{{off}}'.
-        |To run a translet, type '{{GREEN}}translet translet_name{{off}}' or '{{GREEN}}translet_name{{off}}'.
-        |To get help on a specific command, type '{{GREEN}}command_name -h{{off}}'.
-        |If you want a list of all supported built-in commands, type '{{GREEN}}help{{off}}'.
-        |If you want a list of all available translets, type '{{GREEN}}translet -l{{off}}'.
+        |To run a command, type '{{GREEN}}command_name [options] [args]{{reset}}'.
+        |To run a translet, type '{{GREEN}}translet translet_name{{reset}}' or '{{GREEN}}translet_name{{reset}}'.
+        |To get help on a specific command, type '{{GREEN}}command_name -h{{reset}}'.
+        |If you want a list of all supported built-in commands, type '{{GREEN}}help{{reset}}'.
+        |If you want a list of all available translets, type '{{GREEN}}translet -l{{reset}}'.
     )
     verbose: true
     exposals: {
