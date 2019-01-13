@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE aspectran PUBLIC "-//ASPECTRAN//DTD Aspectran Configuration 5.0//EN"
-                           "http://aspectran.github.io/dtd/aspectran-5.dtd">
-
+<!DOCTYPE aspectran PUBLIC "-//ASPECTRAN//DTD Aspectran Configuration 6.0//EN"
+        "http://aspectran.github.io/dtd/aspectran-6.dtd">
 <aspectran>
 
     <settings>
@@ -28,8 +27,8 @@
     <schedule id="scheduler1">
         <scheduler>
             <trigger type="simple">
-                intervalInSeconds: 3
-                repeatCount: 10
+                intervalInSeconds: 5
+                repeatCount: 3
             </trigger>
         </scheduler>
         <job translet="hello1"/>
@@ -41,7 +40,7 @@
                 <item valueType="int">1</item>
             </arguments>
         </action>
-        <transform type="transform/text" contentType="text/plain">
+        <transform type="transform/text">
             <template>1) Hello, World!</template>
         </transform>
     </translet>
