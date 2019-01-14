@@ -13,9 +13,6 @@
         <setting name="transletNamePattern" value="*.job"/>
     </settings>
 
-    <bean id="*" scan="sample.**.*Action"/>
-    <bean id="*" scan="sample.**.*Job"/>
-
     <append file="/config/scheduler1-config.xml"/>
     <append file="/config/scheduler2-config.xml"/>
 

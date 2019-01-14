@@ -3,6 +3,11 @@
         "http://aspectran.github.io/dtd/aspectran-6.dtd">
 <aspectran>
 
+    <description>
+        An Aspectran Configuration that prints out the current time
+        every five seconds using Aspectran Scheduler
+    </description>
+
     <settings>
         <setting name="defaultSchedulerBean" value="defaultScheduler1"/>
     </settings>
@@ -28,20 +33,18 @@
         <scheduler>
             <trigger type="simple">
                 intervalInSeconds: 5
-                repeatCount: 3
+                repeatCount: 0
             </trigger>
         </scheduler>
-        <job translet="hello1"/>
+        <job translet="job1"/>
     </schedule>
 
-    <translet name="hello1">
-        <action bean="sample.CommonAction" method="delay">
-            <arguments>
-                <item valueType="int">1</item>
-            </arguments>
-        </action>
+    <translet name="job1">
+        <action id="msg" bean="scheduledTasks" method="reportCurrentTime"/>
         <transform type="transform/text">
-            <template>1) Hello, World!</template>
+            <template style="apon">
+                |[job1-@{count}] @{msg}
+            </template>
         </transform>
     </translet>
 

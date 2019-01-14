@@ -1,8 +1,10 @@
 context: {
-    root: /config/root-config.xml
+    root: /config/app-config.xml
     resources: [
-        /classes
         /resources
+    ]
+    scan: [
+        sample
     ]
     hybridLoad: false
     autoReload: {
@@ -12,11 +14,31 @@ context: {
     }
     profiles: {
     }
+    singleton: true
 }
 scheduler: {
     startDelaySeconds: 3
     waitOnShutdown: true
     startup: true
+}
+daemon: {
+    commands: [
+        com.aspectran.daemon.command.builtins.BeanMethodActionCommand
+        com.aspectran.daemon.command.builtins.TransletCommand
+        com.aspectran.daemon.command.builtins.TemplateCommand
+        com.aspectran.daemon.command.builtins.PollingIntervalCommand
+        com.aspectran.daemon.command.builtins.RestartCommand
+        com.aspectran.daemon.command.builtins.QuitCommand
+    ]
+    poller: {
+        pollingInterval: 5000
+        maxThreads: 5
+        inbound: /inbound
+        requeue: false
+    }
+    exposals: {
+        -: /**
+    }
 }
 shell: {
     prompt: "{{CYAN}}gs-scheduler{{YELLOW}}>{{reset}} "
