@@ -42,4 +42,8 @@ public class ScheduledTasks {
         return msg;
     }
 
+    public void occurError() {
+        throw new IllegalStateException("An error occurred running job");
+    }
+
 }

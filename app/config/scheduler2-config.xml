@@ -42,6 +42,7 @@
 
     <translet name="job2">
         <action id="msg" bean="scheduledTasks" method="reportCurrentTime"/>
+        <action bean="scheduledTasks" method="occurError"/>
         <transform type="transform/text">
             <template style="apon">
                 |[job2-@{count}] @{msg}
