@@ -21,8 +21,7 @@ import com.aspectran.core.component.bean.annotation.Component;
 import com.aspectran.core.util.logging.Log;
 import com.aspectran.core.util.logging.LogFactory;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
@@ -31,13 +30,11 @@ public class ScheduledTasks {
 
     private static final Log log = LogFactory.getLog(ScheduledTasks.class);
 
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-
     private static final AtomicInteger counter = new AtomicInteger();
 
     public String reportCurrentTime(Translet translet) {
         translet.setAttribute("count", counter.incrementAndGet());
-        String msg = "The time is now " + dateFormat.format(new Date());
+        String msg = "The time is now " + LocalDateTime.now();
         log.info(msg);
         return msg;
     }

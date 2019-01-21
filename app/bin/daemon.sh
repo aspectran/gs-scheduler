@@ -116,10 +116,10 @@ case "$1" in
     ;;
     *       )
         echo "Usage: daemon.sh ( commands ... )"
-        echo "commands:"
+        echo "Commands:"
         echo "  start     Start Aspectran Daemon"
         echo "  stop      Stop Aspectran Daemon"
-        echo "  version   What version of aspectran are you running?"
+        echo "  version   Display version information"
         exit 1
     ;;
 esac
