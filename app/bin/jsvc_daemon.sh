@@ -100,50 +100,67 @@ TMP_DIR="$BASE_DIR/temp"
 LOGGING_CONFIG="$BASE_DIR/config/logback.xml"
 ASPECTRAN_CONFIG="$BASE_DIR/config/aspectran-config.apon"
 DAEMON_MAIN="com.aspectran.daemon.JsvcDaemon"
+
+do_start() {
+    > "$DAEMON_OUT"
+    "$JSVC" \
+        $JAVA_OPTS \
+        $DAEMON_USER \
+        -jvm server \
+        -java-home "$JAVA_HOME" \
+        -pidfile "$DAEMON_PID" \
+        -wait "$SERVICE_START_WAIT_TIME" \
+        -outfile "$DAEMON_OUT" \
+        -errfile "$DAEMON_OUT" \
+        -classpath "$CLASSPATH" \
+        -Djava.io.tmpdir="$TMP_DIR" \
+        -Dlogback.configurationFile="$LOGGING_CONFIG" \
+        -Daspectran.basePath="$BASE_DIR" \
+        ${ASPECTRAN_OPTS} \
+        $DAEMON_MAIN \
+        "$ASPECTRAN_CONFIG"
+    sleep 0.2
+    if [ -e "$DAEMON_OUT" ]; then
+        cat "$DAEMON_OUT"
+    fi
+}
+
+do_stop() {
+    > "$DAEMON_OUT"
+    "$JSVC" \
+        $JAVA_OPTS \
+        -stop \
+        -jvm server \
+        -pidfile "$DAEMON_PID" \
+        -classpath "$CLASSPATH" \
+        -Djava.io.tmpdir="$TMP_DIR" \
+        $DAEMON_MAIN
+    sleep 0.2
+    if [ -e "$DAEMON_OUT" ]; then
+        cat "$DAEMON_OUT"
+    fi
+}
+
+do_version() {
+    "$JAVA_BIN" \
+        -classpath "$CLASSPATH" \
+        -Dlogback.configurationFile="$LOGGING_CONFIG" \
+        -Daspectran.basePath="$BASE_DIR" \
+        com.aspectran.core.util.Aspectran
+}
+
 case "$1" in
-    start     )
-        > "$DAEMON_OUT"
-        "$JSVC" \
-            $JAVA_OPTS \
-            $DAEMON_USER \
-            -jvm server \
-            -java-home "$JAVA_HOME" \
-            -pidfile "$DAEMON_PID" \
-            -wait "$SERVICE_START_WAIT_TIME" \
-            -outfile "$DAEMON_OUT" \
-            -errfile "$DAEMON_OUT" \
-            -classpath "$CLASSPATH" \
-            -Djava.io.tmpdir="$TMP_DIR" \
-            -Dlogback.configurationFile="$LOGGING_CONFIG" \
-            -Daspectran.baseDir="$BASE_DIR" \
-            $DAEMON_MAIN \
-            "$ASPECTRAN_CONFIG"
-        exit $?
-    ;;
-    stop    )
-        "$JSVC" \
-            $JAVA_OPTS \
-            -stop \
-            -jvm server \
-            -pidfile "$DAEMON_PID" \
-            -classpath "$CLASSPATH" \
-            -Djava.io.tmpdir="$TMP_DIR" \
-            $DAEMON_MAIN
-        exit $?
-    ;;
-    version  )
-        "$JAVA_BIN" \
-            -classpath "$CLASSPATH" \
-            -Dlogback.configurationFile="$LOGGING_CONFIG" \
-            -Daspectran.baseDir="$BASE_DIR" \
-            com.aspectran.core.util.Aspectran
-    ;;
-    *       )
-        echo "Usage: jsvc_daemon.sh ( commands ... )"
+    start  ) do_start ;;
+    stop   ) do_stop ;;
+    restart) do_stop; do_start ;;
+    version) do_version ;;
+    *      )
+        echo "Usage: jsvc_daemon.sh <command>"
         echo "Commands:"
-        echo "  start     Start Aspectran Daemon"
-        echo "  stop      Stop Aspectran Daemon"
+        echo "  start     Start Aspectran daemon"
+        echo "  stop      Stop Aspectran daemon"
+        echo "  restart   Restart Aspectran daemon"
         echo "  version   Display version information"
-        exit 1
+        exit 3
     ;;
 esac
