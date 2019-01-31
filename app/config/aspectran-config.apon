@@ -42,6 +42,13 @@ daemon: {
 shell: {
     prompt: "{{CYAN}}gs-scheduler{{YELLOW}}>{{reset}} "
     commands: [
+        com.aspectran.shell.command.builtins.JettyCommand
+        com.aspectran.shell.command.builtins.TransletCommand
+        com.aspectran.shell.command.builtins.AspectCommand
+        com.aspectran.shell.command.builtins.JobCommand
+        com.aspectran.shell.command.builtins.PBEncryptCommand
+        com.aspectran.shell.command.builtins.PBDecryptCommand
+        com.aspectran.shell.command.builtins.SysInfoCommand
         com.aspectran.shell.command.builtins.HelpCommand
         com.aspectran.shell.command.builtins.VerboseCommand
         com.aspectran.shell.command.builtins.RestartCommand
@@ -49,8 +56,6 @@ shell: {
         com.aspectran.shell.command.builtins.ResumeCommand
         com.aspectran.shell.command.builtins.ClearCommand
         com.aspectran.shell.command.builtins.QuitCommand
-        com.aspectran.shell.command.builtins.SysInfoCommand
-        com.aspectran.shell.command.builtins.TransletCommand
     ]
     greetings: (
         |

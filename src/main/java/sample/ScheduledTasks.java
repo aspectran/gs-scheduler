@@ -18,8 +18,6 @@ package sample;
 import com.aspectran.core.activity.Translet;
 import com.aspectran.core.component.bean.annotation.Bean;
 import com.aspectran.core.component.bean.annotation.Component;
-import com.aspectran.core.util.logging.Log;
-import com.aspectran.core.util.logging.LogFactory;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -28,15 +26,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Bean("scheduledTasks")
 public class ScheduledTasks {
 
-    private static final Log log = LogFactory.getLog(ScheduledTasks.class);
-
     private static final AtomicInteger counter = new AtomicInteger();
 
-    public String reportCurrentTime(Translet translet) {
+    public void reportCurrentTime(Translet translet) {
         translet.setAttribute("count", counter.incrementAndGet());
         String msg = "The time is now " + LocalDateTime.now();
-        log.info(msg);
-        return msg;
+        translet.setAttribute("msg", msg);
     }
 
     public void occurError() {

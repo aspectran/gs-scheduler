@@ -9,10 +9,11 @@
     </description>
 
     <settings>
-        <setting name="defaultSchedulerBean" value="defaultScheduler1"/>
+        <setting name="transletNamePattern" value="*.job"/>
+        <setting name="defaultSchedulerBean" value="scheduler1"/>
     </settings>
 
-    <bean id="defaultScheduler1" class="com.aspectran.scheduler.support.QuartzSchedulerFactoryBean">
+    <bean id="scheduler1" class="com.aspectran.scheduler.support.QuartzSchedulerFactoryBean">
         <properties>
             <item type="properties" name="quartzProperties">
                 <value name="org.quartz.scheduler.instanceName">AspectranQuartzScheduler-1</value>
@@ -29,21 +30,21 @@
         </properties>
     </bean>
 
-    <schedule id="scheduler1">
+    <schedule id="schedule1">
         <scheduler>
             <trigger type="simple">
                 intervalInSeconds: 5
-                repeatCount: 0
+                repeatCount: 2
             </trigger>
         </scheduler>
-        <job translet="job1"/>
+        <job translet="sample01" disabled="false"/>
     </schedule>
 
-    <translet name="job1">
-        <action id="msg" bean="scheduledTasks" method="reportCurrentTime"/>
+    <translet name="sample01">
+        <action bean="scheduledTasks" method="reportCurrentTime"/>
         <transform type="transform/text">
             <template style="apon">
-                |[job1-@{count}] @{msg}
+                |[schedule1-sample01-@{count}] @{msg}
             </template>
         </transform>
     </translet>

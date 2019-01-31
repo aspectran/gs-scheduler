@@ -9,10 +9,6 @@
         |
     </description>
 
-    <settings>
-        <setting name="transletNamePattern" value="*.job"/>
-    </settings>
-
     <append file="/config/scheduler1-config.xml"/>
     <append file="/config/scheduler2-config.xml"/>
 

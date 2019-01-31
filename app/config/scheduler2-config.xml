@@ -8,6 +8,10 @@
         every five seconds using Aspectran Scheduler
     </description>
 
+    <settings>
+        <setting name="transletNamePattern" value="*.job"/>
+    </settings>
+
     <bean id="schedulerFactory" class="org.quartz.impl.StdSchedulerFactory">
         <constructor>
             <arguments>
@@ -27,24 +31,24 @@
         </constructor>
     </bean>
 
-    <bean id="defaultScheduler2" factoryBean="schedulerFactory" factoryMethod="getScheduler"/>
+    <bean id="scheduler2" factoryBean="schedulerFactory" factoryMethod="getScheduler"/>
 
-    <schedule id="scheduler2">
-        <scheduler bean="defaultScheduler2">
+    <schedule id="schedule2">
+        <scheduler bean="scheduler2">
             <trigger type="simple">
                 startDelaySeconds: 2
                 intervalInSeconds: 5
                 repeatCount: 0
             </trigger>
         </scheduler>
-        <job translet="job2"/>
+        <job translet="sample02"/>
     </schedule>
 
-    <translet name="job2">
-        <action id="msg" bean="scheduledTasks" method="reportCurrentTime"/>
+    <translet name="sample02">
+        <action bean="scheduledTasks" method="reportCurrentTime"/>
         <transform type="transform/text">
             <template style="apon">
-                |[job2-@{count}] @{msg}
+                |[schedule2-sample02-@{count}] @{msg}
             </template>
         </transform>
     </translet>
