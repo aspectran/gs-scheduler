@@ -25,6 +25,7 @@ daemon: {
     commands: [
         com.aspectran.daemon.command.builtins.BeanMethodActionCommand
         com.aspectran.daemon.command.builtins.TransletCommand
+        com.aspectran.daemon.command.builtins.ComponentCommand
         com.aspectran.daemon.command.builtins.PollingIntervalCommand
         com.aspectran.daemon.command.builtins.RestartCommand
         com.aspectran.daemon.command.builtins.QuitCommand

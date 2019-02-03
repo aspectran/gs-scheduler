@@ -37,10 +37,10 @@
                 repeatCount: 2
             </trigger>
         </scheduler>
-        <job translet="sample01" method="POST"/>
+        <job translet="sample01.job"/>
     </schedule>
 
-    <translet name="sample01" method="POST">
+    <translet name="sample01">
         <action bean="scheduledTasks" method="reportCurrentTime"/>
         <transform type="transform/text">
             <template style="apon">

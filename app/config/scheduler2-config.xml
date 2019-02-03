@@ -41,8 +41,8 @@
                 repeatCount: 0
             </trigger>
         </scheduler>
-        <job translet="sample01" method="POST"/>
-        <job translet="sample02"/>
+        <job translet="sample01.job"/>
+        <job translet="sample02.job"/>
     </schedule>
 
     <translet name="sample02">
