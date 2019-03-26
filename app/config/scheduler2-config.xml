@@ -16,7 +16,7 @@
         <constructor>
             <arguments>
                 <item type="properties">
-                    <value name="org.quartz.scheduler.instanceName">AspectranQuartzScheduler-2</value>
+                    <value name="org.quartz.scheduler.instanceName">Scheduler-2</value>
                     <value name="org.quartz.scheduler.rmi.export">false</value>
                     <value name="org.quartz.scheduler.rmi.proxy">false</value>
                     <value name="org.quartz.scheduler.wrapJobExecutionInUserTransaction">false</value>

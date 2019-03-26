@@ -10,3 +10,5 @@
 /app/lib
 /app/logs/*.log
 /app/temp
+app/.lock
+app/jsvc_daemon.pid
