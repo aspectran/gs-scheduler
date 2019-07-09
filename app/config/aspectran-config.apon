@@ -6,7 +6,6 @@ context: {
     scan: [
         sample
     ]
-    hybridLoad: false
     autoReload: {
         reloadMode: soft
         scanIntervalSeconds: 5
