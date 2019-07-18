@@ -9,7 +9,7 @@
     </description>
 
     <settings>
-        <setting name="transletNamePattern" value="*.job"/>
+        <setting name="transletNameSuffix" value=".job"/>
         <setting name="defaultSchedulerBean" value="scheduler1"/>
     </settings>
 
@@ -42,7 +42,7 @@
 
     <translet name="sample01">
         <action bean="scheduledTasks" method="reportCurrentTime"/>
-        <transform type="transform/text">
+        <transform type="text">
             <template style="apon">
                 |[schedule1-sample01-@{count}] @{msg}
             </template>
