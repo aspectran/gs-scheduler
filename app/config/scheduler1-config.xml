@@ -16,16 +16,16 @@
     <bean id="scheduler1" class="com.aspectran.scheduler.support.QuartzSchedulerFactoryBean">
         <properties>
             <item type="properties" name="quartzProperties">
-                <entry name="org.quartz.scheduler.instanceName">Scheduler-1</value>
-                <entry name="org.quartz.scheduler.rmi.export">false</value>
-                <entry name="org.quartz.scheduler.rmi.proxy">false</value>
-                <entry name="org.quartz.scheduler.wrapJobExecutionInUserTransaction">false</value>
-                <entry name="org.quartz.threadPool.class">org.quartz.simpl.SimpleThreadPool</value>
-                <entry name="org.quartz.threadPool.threadCount">10</value>
-                <entry name="org.quartz.threadPool.threadPriority">5</value>
-                <entry name="org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread">true</value>
-                <entry name="org.quartz.jobStore.misfireThreshold">60000</value>
-                <entry name="org.quartz.jobStore.class">org.quartz.simpl.RAMJobStore</value>
+                <entry name="org.quartz.scheduler.instanceName">Scheduler-1</entry>
+                <entry name="org.quartz.scheduler.rmi.export">false</entry>
+                <entry name="org.quartz.scheduler.rmi.proxy">false</entry>
+                <entry name="org.quartz.scheduler.wrapJobExecutionInUserTransaction">false</entry>
+                <entry name="org.quartz.threadPool.class">org.quartz.simpl.SimpleThreadPool</entry>
+                <entry name="org.quartz.threadPool.threadCount">10</entry>
+                <entry name="org.quartz.threadPool.threadPriority">5</entry>
+                <entry name="org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread">true</entry>
+                <entry name="org.quartz.jobStore.misfireThreshold">60000</entry>
+                <entry name="org.quartz.jobStore.class">org.quartz.simpl.RAMJobStore</entry>
             </item>
         </properties>
     </bean>
