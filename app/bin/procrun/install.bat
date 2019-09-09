@@ -1,33 +1,49 @@
 @echo off
 
-set SERVICE_NAME=AspectranSchedulerService
-set BASE_DIR=%~dp0..\..
+if "%1"=="/?" goto help
+
+set CURRENT_DIR=%CD%
+cd %~dp0..\..
+set BASE_DIR=%CD%
+cd %CURRENT_DIR%
+
+set SERVICE_NAME=%1
+rem If no ServiceName is specified, the default is "AspectranService"
+if not defined SERVICE_NAME (
+  set SERVICE_NAME=AspectranService
+)
 
 rem Detect JAVA_HOME environment variable
 if not defined JAVA_HOME goto java-not-set
 
-rem Detect x86 or x64
+rem Detect x86 or amd64
 if PROCESSOR_ARCHITECTURE EQU "ia64" goto is-ia64
 if PROCESSOR_ARCHITEW6432 EQU "ia64" goto is-ia64
 if PROCESSOR_ARCHITECTURE EQU "amd64" goto is-amd64
 if PROCESSOR_ARCHITEW6432 EQU "amd64" goto is-amd64
 if defined ProgramFiles(x86) goto is-amd64
 :is-x86
+echo Current System Architecture: x86
 set PR_INSTALL=%BASE_DIR%\bin\procrun\prunsrv.exe
 goto is-detected
 :is-amd64
+echo Current System Architecture: amd64
 set PR_INSTALL=%BASE_DIR%\bin\procrun\prunsrv_amd64.exe
 goto is-detected
 :is-ia64
+echo Current System Architecture: ia64
 set PR_INSTALL=%BASE_DIR%\bin\procrun\prunsrv_ia64.exe
 :is-detected
 if not exist "%PR_INSTALL%" goto invalid-installer
 
+echo Windows Service Name: %SERVICE_NAME%
+echo Aspectran Home: %BASE_DIR%
+
 rem Service log configuration
 set PR_LOGPREFIX=%SERVICE_NAME%
 set PR_LOGPATH=%BASE_DIR%\logs
-set PR_STDOUTPUT=%BASE_DIR%\logs\stdout.log
-set PR_STDERROR=%BASE_DIR%\logs\stderr.log
+set PR_STDOUTPUT=%BASE_DIR%\logs\%SERVICE_NAME%.out
+set PR_STDERROR=%BASE_DIR%\logs\%SERVICE_NAME%.err
 set PR_LOGLEVEL=Debug
 
 rem Path to java installation
@@ -36,6 +52,7 @@ if exist "%PR_JVM%" goto jvm-detected
 set PR_JVM=%JAVA_HOME%\bin\server\jvm.dll
 :jvm-detected
 if not exist "%PR_JVM%" goto invalid-jvm
+echo Java VM: %PR_JVM%
 
 set PR_CLASSPATH=%BASE_DIR%\lib\*
 
@@ -52,12 +69,12 @@ set PR_STOPCLASS=com.aspectran.daemon.ProcrunDaemon
 set PR_STOPMETHOD=stop
 
 rem JVM configuration
-set PR_JVMMS=256
-set PR_JVMMX=1024
+set PR_JVMMS=128
+set PR_JVMMX=512
 set PR_JVMSS=4096
 set PR_JVMOPTIONS=-Duser.language=en;-Duser.region=US;-Dlogback.configurationFile=%BASE_DIR%\config\logback.xml;-Daspectran.basePath=%BASE_DIR%
 
-rem Install service
+echo Creating Service...
 %PR_INSTALL% //IS/%SERVICE_NAME% ^
   --DisplayName="%SERVICE_NAME%" ^
   --Install="%PR_INSTALL%" ^
@@ -82,7 +99,12 @@ rem Install service
   --StopClass="%PR_STOPCLASS%" ^
   --StopMethod="%PR_STOPMETHOD%"
  
-if not errorlevel 1 goto installed
+if not errorlevel 1 (
+  echo For easy management, copy the prunmgr.exe file with the same name as the service name.
+  copy /Y %BASE_DIR%\bin\procrun\prunmgr.exe %BASE_DIR%\bin\procrun\%SERVICE_NAME%.exe
+  goto installed
+)
+
 echo Failed to install "%SERVICE_NAME%" service.
 echo Refer to log in %PR_LOGPATH%
 goto end
@@ -106,5 +128,8 @@ if not exist "%SystemRoot%\System32\choice.exe" goto end
 if errorlevel 2 goto end
 start %SERVICE_NAME%.exe
 goto end
+
+:help
+echo Usage: %~n0 [ServiceName]
 
 :end
