@@ -17,8 +17,6 @@ rem Detect JAVA_HOME environment variable
 if not defined JAVA_HOME goto java-not-set
 
 rem Detect x86 or amd64
-if PROCESSOR_ARCHITECTURE EQU "ia64" goto is-ia64
-if PROCESSOR_ARCHITEW6432 EQU "ia64" goto is-ia64
 if PROCESSOR_ARCHITECTURE EQU "amd64" goto is-amd64
 if PROCESSOR_ARCHITEW6432 EQU "amd64" goto is-amd64
 if defined ProgramFiles(x86) goto is-amd64
@@ -30,9 +28,6 @@ goto is-detected
 echo Current System Architecture: amd64
 set PR_INSTALL=%BASE_DIR%\bin\procrun\prunsrv_amd64.exe
 goto is-detected
-:is-ia64
-echo Current System Architecture: ia64
-set PR_INSTALL=%BASE_DIR%\bin\procrun\prunsrv_ia64.exe
 :is-detected
 if not exist "%PR_INSTALL%" goto invalid-installer
 
@@ -72,7 +67,12 @@ rem JVM configuration
 set PR_JVMMS=128
 set PR_JVMMX=512
 set PR_JVMSS=4096
-set PR_JVMOPTIONS=-Duser.language=en;-Duser.region=US;-Dlogback.configurationFile=%BASE_DIR%\config\logback.xml;-Daspectran.basePath=%BASE_DIR%
+set PR_JVMOPTIONS=-Duser.language=en;-Duser.region=US;^
+-Djava.awt.headless=true;^
+-Djava.net.preferIPv4Stack=true;^
+-Djava.io.tmpdir=%BASE_DIR%\temp;^
+-Daspectran.basePath=%BASE_DIR%;^
+-Dlogback.configurationFile=%BASE_DIR%\config\logback.xml
 
 echo Creating Service...
 %PR_INSTALL% //IS/%SERVICE_NAME% ^
