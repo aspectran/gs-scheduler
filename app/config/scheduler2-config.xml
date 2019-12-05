@@ -9,7 +9,7 @@
     </description>
 
     <settings>
-        <setting name="transletNamePattern" value="*.job"/>
+        <setting name="transletNameSuffix" value=".job"/>
     </settings>
 
     <bean id="schedulerFactory" class="org.quartz.impl.StdSchedulerFactory">
