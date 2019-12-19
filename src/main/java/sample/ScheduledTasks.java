@@ -18,16 +18,37 @@ package sample;
 import com.aspectran.core.activity.Translet;
 import com.aspectran.core.component.bean.annotation.Bean;
 import com.aspectran.core.component.bean.annotation.Component;
+import com.aspectran.core.component.bean.annotation.Request;
+import com.aspectran.core.context.rule.type.TriggerType;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 @Bean("scheduledTasks")
+//@Schedule(
+//        id = "schedule-1",
+//        scheduler = @Scheduler(
+//                bean = "scheduler1",
+//                beanClass = ScheduledTasks.class,
+//                simpleTrigger = @SimpleTrigger(
+//                        startDelaySeconds = 1,
+//                        intervalInMilliseconds = 1L
+//                ),
+//                cronTrigger = @CronTrigger(
+//                        expression = "0/5 * * * * *"
+//                )
+//        ),
+//        jobs = {
+//                @Job(translet = "job1.job", disabled = false),
+//                @Job(translet = "job2.job", disabled = true)
+//        }
+//)
 public class ScheduledTasks {
 
     private static final AtomicInteger counter = new AtomicInteger();
 
+    @Request("job1.job")
     public void reportCurrentTime(Translet translet) {
         translet.setAttribute("count", counter.incrementAndGet());
         String msg = "The time is now " + LocalDateTime.now();
