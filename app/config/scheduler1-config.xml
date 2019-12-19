@@ -13,7 +13,7 @@
         <setting name="defaultSchedulerBean" value="scheduler1"/>
     </settings>
 
-    <bean id="scheduler1" class="com.aspectran.scheduler.support.QuartzSchedulerFactoryBean">
+    <bean id="scheduler1" class="com.aspectran.core.scheduler.support.QuartzSchedulerFactoryBean">
         <properties>
             <item type="properties" name="quartzProperties">
                 <entry name="org.quartz.scheduler.instanceName">Scheduler-1</entry>
