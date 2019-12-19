@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package sample;
+package gs.scheduler;
 
 import com.aspectran.core.activity.Translet;
 import com.aspectran.core.component.bean.annotation.Bean;
@@ -26,24 +26,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 @Bean("scheduledTasks")
-//@Schedule(
-//        id = "schedule-1",
-//        scheduler = @Scheduler(
-//                bean = "scheduler1",
-//                beanClass = ScheduledTasks.class,
-//                simpleTrigger = @SimpleTrigger(
-//                        startDelaySeconds = 1,
-//                        intervalInMilliseconds = 1L
-//                ),
-//                cronTrigger = @CronTrigger(
-//                        expression = "0/5 * * * * *"
-//                )
-//        ),
-//        jobs = {
-//                @Job(translet = "job1.job", disabled = false),
-//                @Job(translet = "job2.job", disabled = true)
-//        }
-//)
 public class ScheduledTasks {
 
     private static final AtomicInteger counter = new AtomicInteger();

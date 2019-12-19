@@ -1,10 +1,10 @@
 context: {
     root: /config/app-config.xml
     resources: [
-        /resources
+        /config
     ]
     scan: [
-        sample
+        gs.scheduler
     ]
     autoReload: {
         reloadMode: soft

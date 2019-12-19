@@ -29,6 +29,7 @@ public class DevScheduler {
             File current = ResourceUtils.getResourceAsFile(".");
             File root = new File(current, "../../app");
             File aspectranConfigFile = new File(root, "config/aspectran-config.apon");
+            System.setProperty("aspectran.basePath", root.getCanonicalPath()); // for logback
             Console console = new JLineConsole();
             AspectranShell.bootstrap(root.getCanonicalPath(), aspectranConfigFile, console);
         } catch (IOException e) {

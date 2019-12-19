@@ -9,7 +9,7 @@
         |
     </description>
 
-    <append file="/config/scheduler1-config.xml"/>
-    <append file="/config/scheduler2-config.xml"/>
+    <!--<append file="/config/scheduler/sample-1.xml"/>-->
+    <!--<append file="/config/scheduler/sample-2.xml"/>-->
 
 </aspectran>
