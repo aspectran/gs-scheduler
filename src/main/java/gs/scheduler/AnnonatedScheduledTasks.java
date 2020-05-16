@@ -23,7 +23,7 @@ import com.aspectran.core.component.bean.annotation.Request;
 import com.aspectran.core.component.bean.annotation.Schedule;
 import com.aspectran.core.component.bean.annotation.Transform;
 import com.aspectran.core.component.bean.annotation.Value;
-import com.aspectran.core.context.rule.type.TransformType;
+import com.aspectran.core.context.rule.type.FormatType;
 import org.quartz.SchedulerException;
 import org.quartz.SchedulerFactory;
 import org.quartz.impl.StdSchedulerFactory;
@@ -52,7 +52,7 @@ public class AnnonatedScheduledTasks {
     public Properties quartzProperties;
 
     @Request("annotated/job1.job")
-    @Transform(TransformType.TEXT)
+    @Transform(FormatType.TEXT)
     public String printCurrentTime() {
         counter.incrementAndGet();
         return "The time is now " + LocalDateTime.now();

@@ -42,7 +42,7 @@
 
     <translet name="sample01">
         <action bean="scheduledTasks" method="reportCurrentTime"/>
-        <transform type="text">
+        <transform format="text">
             <template style="apon">
                 |[schedule1-sample01-@{count}] @{msg}
             </template>
