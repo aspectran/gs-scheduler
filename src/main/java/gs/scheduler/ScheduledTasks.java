@@ -19,7 +19,6 @@ import com.aspectran.core.activity.Translet;
 import com.aspectran.core.component.bean.annotation.Bean;
 import com.aspectran.core.component.bean.annotation.Component;
 import com.aspectran.core.component.bean.annotation.Request;
-import com.aspectran.core.context.rule.type.TriggerType;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicInteger;
