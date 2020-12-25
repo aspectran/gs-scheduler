@@ -19,6 +19,9 @@
     <logger name="org.quartz" level="info" additivity="false">
         <appender-ref ref="APP-OUT"/>
     </logger>
+    <logger name="gs.scheduler" level="debug" additivity="false">
+        <appender-ref ref="APP-OUT"/>
+    </logger>
     <root level="info">
         <appender-ref ref="APP-OUT"/>
     </root>

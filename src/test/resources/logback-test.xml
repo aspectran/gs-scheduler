@@ -16,7 +16,7 @@
     <logger name="com.aspectran" level="debug" additivity="false">
         <appender-ref ref="APP-OUT"/>
     </logger>
-    <logger name="com.aspectran.core.scheduler.service.JobActivityReport" level="debug" additivity="false">
+    <logger name="com.aspectran.core.scheduler.service.JobActivityReport" level="debug" additivity="true">
         <appender-ref ref="APP-OUT"/>
     </logger>
     <logger name="com.aspectran.core.component.session" level="debug" additivity="false">
