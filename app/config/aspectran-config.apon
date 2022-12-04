@@ -38,7 +38,6 @@ shell: {
     )
     prompt: "{{CYAN}}gs-scheduler{{YELLOW}}>{{reset}} "
     commands: [
-        com.aspectran.shell.command.builtins.JettyCommand
         com.aspectran.shell.command.builtins.TransletCommand
         com.aspectran.shell.command.builtins.AspectCommand
         com.aspectran.shell.command.builtins.JobCommand
