@@ -24,7 +24,7 @@ import java.io.IOException;
 
 import static com.aspectran.core.context.config.AspectranConfig.BASE_PATH_PROPERTY_NAME;
 
-public class DevScheduler {
+public class GsScheduler {
 
     public static void main(String[] args) {
         try {
