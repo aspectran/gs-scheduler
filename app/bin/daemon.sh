@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# Copyright (c) 2008-2022 The Aspectran Project
-#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -17,6 +15,10 @@
 # -----------------------------------------------------------------------------
 # Control Script for the Aspectran Daemon
 # -----------------------------------------------------------------------------
+
+set -a
+. ./.env
+set +a
 
 ARG0="$0"
 while [ -h "$ARG0" ]; do
@@ -75,13 +77,17 @@ else
   JAVA_BIN="$JAVA_HOME/bin/java"
 fi
 
+if [ -z "$JAVA_OPTS" ]; then
+  JAVA_OPTS="-Xms256m -Xmx512m"
+fi
+
 DAEMON_OUT="$BASE_DIR/logs/daemon.out"
 DAEMON_MAIN="com.aspectran.daemon.DefaultDaemon"
 LOCK_FILE="$BASE_DIR/.lock"
 CLASSPATH="$BASE_DIR/lib/*"
 TMP_DIR="$BASE_DIR/temp"
-LOGGING_CONFIG="$BASE_DIR/config/logback.xml"
 ASPECTRAN_CONFIG="$BASE_DIR/config/aspectran-config.apon"
+LOGGING_CONFIG="$BASE_DIR/config/logging/logging/logback.xml"
 
 start_daemon() {
   rm -f "$DAEMON_OUT"

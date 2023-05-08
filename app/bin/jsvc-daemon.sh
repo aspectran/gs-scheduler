@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# Copyright (c) 2008-2022 The Aspectran Project
-#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -17,6 +15,10 @@
 # -----------------------------------------------------------------------------
 # Commons Daemon wrapper script
 # -----------------------------------------------------------------------------
+
+set -a
+. ./.env
+set +a
 
 ARG0="$0"
 while [ -h "$ARG0" ]; do
@@ -93,6 +95,10 @@ else
   JAVA_BIN="$JAVA_HOME/bin/java"
 fi
 
+if [ -z "$JAVA_OPTS" ]; then
+  JAVA_OPTS="-Xms256m -Xmx512m"
+fi
+
 JSVC="$BASE_DIR/bin/jsvc"
 if [ ! -e "$JSVC" ]; then
   JSVC="$(command -v jsvc 2>/dev/null || type jsvc 2>&1)"
@@ -112,8 +118,8 @@ DAEMON_ERR="$BASE_DIR/logs/daemon.err"
 DAEMON_MAIN="com.aspectran.daemon.JsvcDaemon"
 CLASSPATH="$BASE_DIR/lib/*"
 TMP_DIR="$BASE_DIR/temp"
-LOGGING_CONFIG="$BASE_DIR/config/logback.xml"
 ASPECTRAN_CONFIG="$BASE_DIR/config/aspectran-config.apon"
+LOGGING_CONFIG="$BASE_DIR/config/logging/logging/logback.xml"
 
 start_daemon() {
   : >"$DAEMON_OUT"
