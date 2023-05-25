@@ -17,6 +17,7 @@
 import com.aspectran.core.util.ResourceUtils;
 import com.aspectran.shell.AspectranShell;
 import com.aspectran.shell.console.ShellConsole;
+import com.aspectran.shell.jline.JLineAspectranShell;
 import com.aspectran.shell.jline.console.JLineShellConsole;
 
 import java.io.File;
@@ -28,12 +29,9 @@ public class GsScheduler {
 
     public static void main(String[] args) {
         try {
-            File current = ResourceUtils.getResourceAsFile(".");
-            File root = new File(current, "../../app");
-            File aspectranConfigFile = new File(root, "config/aspectran-config.apon");
+            File root = new File(ResourceUtils.getResourceAsFile(""), "../../app");
             System.setProperty(BASE_PATH_PROPERTY_NAME, root.getCanonicalPath()); // for logback
-            ShellConsole console = new JLineShellConsole();
-            AspectranShell.bootstrap(root.getCanonicalPath(), aspectranConfigFile, console);
+            JLineAspectranShell.main(new String[] { root.getCanonicalPath(), "config/aspectran-config.apon" });
         } catch (IOException e) {
             e.printStackTrace(System.err);
         }

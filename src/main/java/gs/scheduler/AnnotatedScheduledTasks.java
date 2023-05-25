@@ -44,7 +44,7 @@ import java.util.concurrent.atomic.AtomicInteger;
                 @Job(translet = "annotated/job1.job")
         }
 )
-public class AnnonatedScheduledTasks {
+public class AnnotatedScheduledTasks {
 
     private static final AtomicInteger counter = new AtomicInteger();
 
