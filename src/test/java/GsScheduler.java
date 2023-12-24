@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import com.aspectran.core.util.ResourceUtils;
+import com.aspectran.utils.ResourceUtils;
 import com.aspectran.shell.AspectranShell;
 import com.aspectran.shell.console.ShellConsole;
 import com.aspectran.shell.jline.JLineAspectranShell;

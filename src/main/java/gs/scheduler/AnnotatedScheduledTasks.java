@@ -17,10 +17,10 @@ package gs.scheduler;
 
 import com.aspectran.core.component.bean.annotation.Bean;
 import com.aspectran.core.component.bean.annotation.Component;
-import com.aspectran.core.component.bean.annotation.CronTrigger;
-import com.aspectran.core.component.bean.annotation.Job;
+import com.aspectran.utils.annotation.CronTrigger;
+import com.aspectran.utils.annotation.Job;
 import com.aspectran.core.component.bean.annotation.Request;
-import com.aspectran.core.component.bean.annotation.Schedule;
+import com.aspectran.utils.annotation.Schedule;
 import com.aspectran.core.component.bean.annotation.Transform;
 import com.aspectran.core.component.bean.annotation.Value;
 import com.aspectran.core.context.rule.type.FormatType;
