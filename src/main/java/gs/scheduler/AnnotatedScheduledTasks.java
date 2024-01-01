@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008-2024 The Aspectran Project
+ * Copyright (c) 2016-2024 The Aspectran Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@ package gs.scheduler;
 
 import com.aspectran.core.component.bean.annotation.Bean;
 import com.aspectran.core.component.bean.annotation.Component;
-import com.aspectran.utils.annotation.CronTrigger;
-import com.aspectran.utils.annotation.Job;
+import com.aspectran.core.component.bean.annotation.CronTrigger;
+import com.aspectran.core.component.bean.annotation.Job;
 import com.aspectran.core.component.bean.annotation.Request;
-import com.aspectran.utils.annotation.Schedule;
+import com.aspectran.core.component.bean.annotation.Schedule;
 import com.aspectran.core.component.bean.annotation.Transform;
 import com.aspectran.core.component.bean.annotation.Value;
 import com.aspectran.core.context.rule.type.FormatType;
