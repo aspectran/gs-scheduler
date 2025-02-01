@@ -19,6 +19,7 @@ import com.aspectran.core.activity.Translet;
 import com.aspectran.core.component.bean.annotation.Bean;
 import com.aspectran.core.component.bean.annotation.Component;
 import com.aspectran.core.component.bean.annotation.Request;
+import com.aspectran.utils.annotation.jsr305.NonNull;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -30,14 +31,14 @@ public class ScheduledTasks {
     private static final AtomicInteger counter = new AtomicInteger();
 
     @Request("job1.job")
-    public void reportCurrentTime(Translet translet) {
+    public void reportCurrentTime(@NonNull Translet translet) {
         translet.setAttribute("count", counter.incrementAndGet());
         String msg = "The time is now " + LocalDateTime.now();
         translet.setAttribute("msg", msg);
     }
 
     public void occurError() {
-        throw new IllegalStateException("Error while executing task");
+        throw new IllegalStateException("Error executing task");
     }
 
 }
