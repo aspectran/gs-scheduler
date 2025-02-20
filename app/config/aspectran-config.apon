@@ -1,4 +1,5 @@
 context: {
+    name: root
     rules: /config/root-context.xml
     resources: [
         /lib/ext
