@@ -12,6 +12,9 @@ context: {
         enabled: false
     }
     profiles: {
+        default: [
+            dev
+        ]
     }
     singleton: true
 }
