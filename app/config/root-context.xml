@@ -9,7 +9,7 @@
         |
     </description>
 
-    <!--<append resource="sample/sample-1.xml"/>-->
-    <!--<append resource="sample/sample-2.xml"/>-->
+    <!--<append resource="gs/scheduler/sample/sample-1.xml"/>-->
+    <!--<append resource="gs/scheduler/sample/sample-2.xml"/>-->
 
 </aspectran>
