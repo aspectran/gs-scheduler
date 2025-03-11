@@ -19,7 +19,7 @@ context: {
     singleton: true
 }
 scheduler: {
-    startDelaySeconds: 2
+    startDelaySeconds: 1
     waitOnShutdown: true
     enabled: true
 }
