@@ -1,6 +1,6 @@
 context: {
     name: root
-    rules: /config/root-context.xml
+    rules: /config/aspectran-rules.xml
     resources: [
         /lib/ext
     ]
